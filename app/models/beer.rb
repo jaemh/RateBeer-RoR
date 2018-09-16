@@ -1,3 +1,7 @@
 class Beer < ApplicationRecord
-belongs_to :brewery
+    include RatingAverage
+    
+    belongs_to :brewery
+    has_many :ratings, dependent: :destroy
+    
 end
