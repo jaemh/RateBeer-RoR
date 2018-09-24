@@ -16,6 +16,7 @@ class BeerClubsTest < ApplicationSystemTestCase
 
     fill_in "City", with: @beer_club.city
     fill_in "Founded", with: @beer_club.founded
+    fill_in "Name", with: @beer_club.name
     click_on "Create Beer club"
 
     assert_text "Beer club was successfully created"
@@ -28,6 +29,7 @@ class BeerClubsTest < ApplicationSystemTestCase
 
     fill_in "City", with: @beer_club.city
     fill_in "Founded", with: @beer_club.founded
+    fill_in "Name", with: @beer_club.name
     click_on "Update Beer club"
 
     assert_text "Beer club was successfully updated"
