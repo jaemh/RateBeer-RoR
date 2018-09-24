@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>
+  <%= @user.username %>
+</h1>
+
+<p>
+  <% if @user.ratings.empty? %>
+  has not made any ...!
+  <% else %>
+  <%= "Has made #{pluralize(@user.ratings.count, "rating")}, average rating #{@user.average_rating}" %>
+  <% end %>
+</p>
+
+<table>
+  <p> 
+    <h3>ratings</h3>
+    <ul>
+      <% @user.ratings.each  do |rating| %>
+        <li><%= rating %></li>
+      <% end %>
+    </ul>
+  </p>
+</table>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>
