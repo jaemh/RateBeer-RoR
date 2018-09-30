@@ -1,8 +1,13 @@
 language: ruby
-
 rvm:
 - 2.5.1
-
 script:
-- bundle exec rails db:migrate 
+- bundle exec rails db:migrate
 - bundle exec rspec -fd specx
+deploy:
+  provider: heroku
+  api_key:
+    secure: M/cfqrLIZxLAv1U1Ss4PELEyiLaM1YqGmGsKHysd62kcf+iQLg0Pq3HYnnxpAT3GfVFAy00nDd+xXW1EiG22OQUKR9l+vGMAw6QG1TQhT//uBG6dgCxmZBCFhHNfqqCmGHEYjMqk2+TLo6bfTmd2HgSMJi9KENrLuUC/CHQwhT//bvF1LdtCqeHAqAMWIT/GrZHic1VnSoKw+mEghRP/AUXfXmKtisp2tIE+1e51r4MUXDx5G3YELBsApGsbyZ/vzHngjwq2BTcxzyV7btnL3F7mKuW+N9ko6tx3zxRpxMBpsjUGT43n2mCAH15iUnBH+o8KJANHTCBjDL6ruHDdkOk6A5uJ2TpcAIsAp7LVJe5Ri81J3vawS414hdVwL7MbDCXj2MbK/Bl3oq23VNfkvcJb10LEgaBc6Grmv7wJ6wqvl9oISLYQ0LQFrhZ7BaGA3lOKdaGkwcXhULM2U3w+xrHf7A5U6f27lON3oRGd+HBp1YExfNBsZT2exXbPSABo5nUnnkSJbjHXxRdEx0n8lTp89d1d8znC8mX2NV03+70uGLYM7W7vVN/USa7GBBwd/gY4Q7aPma4WWKvHikj8PRlfq+Bey9ko9l15bRGJf+w93SnNELqH+mrkb1hVJc9wxCgxXIHcuXPLXUsjm1hO8KmFiGJkMlBaARzCGmIRKRI=
+  app: ratebeerror
+  on:
+    repo: jaemh/RateBeer-RoR
