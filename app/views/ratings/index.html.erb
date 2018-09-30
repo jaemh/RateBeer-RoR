@@ -1,14 +1,16 @@
 <h2>List of ratings</h2>
 
 <table>
+  <p> Amount of ratings: <%= @ratings.count %>
   <tbody>
       <ul>
+        <pre><b>Beer Score User<b></pre>
         <% @ratings.each do |rating| %>
-          <li> <%= rating %> <%= link_to rating.user.username, rating.user %></li>
+          <pre><%= rating %> &nbsp <%= link_to rating.user.username%></pre>
         <% end %>
       </ul>
 
-  <%= link_to 'new rating', new_rating_path %>    
+  <%= link_to 'new rating', new_rating_path if current_user %>    
 
   </tbody>
 </table>

@@ -15,5 +15,17 @@ class User < ApplicationRecord
                        format: { with: /(?=.*[A-Z])./, 
                        message: "must include at least one one uppercase letter"}
 
+
+  def favorite_beer
+    return nil if ratings.empty?
+    ratings.order(score: :desc).limit(1).first.beer 
+  end
+
+  def create_beers_with_many_ratings(object, *scores)
+    scores.each do |score|
+      create_beer_with_rating(object, score)
+  end
+  
+  end
 end
 

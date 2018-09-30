@@ -10,6 +10,7 @@ class Beer < ApplicationRecord
   def to_s
     "#{name} #{brewery.name}"
   end
+  
 
   def average
     return 0 if ratings.empty?
