@@ -63,7 +63,6 @@ RSpec.describe User, type: :model do
       rating = FactoryBot.create(:rating, score: 20, beer: beer, user: user)
 
       expect(user.favorite_beer).to eq(beer)
-
     end    
   end
 end
