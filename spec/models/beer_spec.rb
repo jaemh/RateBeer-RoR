@@ -1,5 +1,6 @@
 require 'rails_helper'
 
+
 RSpec.describe Beer, type: :model do
   it "beer name has set correctly" do
     beer = Beer.new name:"JustBeer"
