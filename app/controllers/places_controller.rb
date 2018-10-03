@@ -1,7 +1,6 @@
 class PlacesController < ApplicationController
 
     def index
-        @places = BeermappingApi.find(params[:id])
     end
 
     def show  

@@ -23,10 +23,10 @@ require 'rails_helper'
 # removed from Rails core in Rails 5, but can be added back in via the
 # `rails-controller-testing` gem.
 
-RSpec.describe BarsController, type: :controller do
+RSpec.describe MembershipsController, type: :controller do
 
   # This should return the minimal set of attributes required to create a valid
-  # Bar. As you add validations to Bar, be sure to
+  # Membership. As you add validations to Membership, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
     skip("Add a hash of attributes valid for your model")
@@ -38,12 +38,12 @@ RSpec.describe BarsController, type: :controller do
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
-  # BarsController. Be sure to keep this updated too.
+  # MembershipsController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
   describe "GET #index" do
     it "returns a success response" do
-      Bar.create! valid_attributes
+      Membership.create! valid_attributes
       get :index, params: {}, session: valid_session
       expect(response).to be_successful
     end
@@ -51,8 +51,8 @@ RSpec.describe BarsController, type: :controller do
 
   describe "GET #show" do
     it "returns a success response" do
-      bar = Bar.create! valid_attributes
-      get :show, params: {id: bar.to_param}, session: valid_session
+      membership = Membership.create! valid_attributes
+      get :show, params: {id: membership.to_param}, session: valid_session
       expect(response).to be_successful
     end
   end
@@ -66,29 +66,29 @@ RSpec.describe BarsController, type: :controller do
 
   describe "GET #edit" do
     it "returns a success response" do
-      bar = Bar.create! valid_attributes
-      get :edit, params: {id: bar.to_param}, session: valid_session
+      membership = Membership.create! valid_attributes
+      get :edit, params: {id: membership.to_param}, session: valid_session
       expect(response).to be_successful
     end
   end
 
   describe "POST #create" do
     context "with valid params" do
-      it "creates a new Bar" do
+      it "creates a new Membership" do
         expect {
-          post :create, params: {bar: valid_attributes}, session: valid_session
-        }.to change(Bar, :count).by(1)
+          post :create, params: {membership: valid_attributes}, session: valid_session
+        }.to change(Membership, :count).by(1)
       end
 
-      it "redirects to the created bar" do
-        post :create, params: {bar: valid_attributes}, session: valid_session
-        expect(response).to redirect_to(Bar.last)
+      it "redirects to the created membership" do
+        post :create, params: {membership: valid_attributes}, session: valid_session
+        expect(response).to redirect_to(Membership.last)
       end
     end
 
     context "with invalid params" do
       it "returns a success response (i.e. to display the 'new' template)" do
-        post :create, params: {bar: invalid_attributes}, session: valid_session
+        post :create, params: {membership: invalid_attributes}, session: valid_session
         expect(response).to be_successful
       end
     end
@@ -100,41 +100,41 @@ RSpec.describe BarsController, type: :controller do
         skip("Add a hash of attributes valid for your model")
       }
 
-      it "updates the requested bar" do
-        bar = Bar.create! valid_attributes
-        put :update, params: {id: bar.to_param, bar: new_attributes}, session: valid_session
-        bar.reload
+      it "updates the requested membership" do
+        membership = Membership.create! valid_attributes
+        put :update, params: {id: membership.to_param, membership: new_attributes}, session: valid_session
+        membership.reload
         skip("Add assertions for updated state")
       end
 
-      it "redirects to the bar" do
-        bar = Bar.create! valid_attributes
-        put :update, params: {id: bar.to_param, bar: valid_attributes}, session: valid_session
-        expect(response).to redirect_to(bar)
+      it "redirects to the membership" do
+        membership = Membership.create! valid_attributes
+        put :update, params: {id: membership.to_param, membership: valid_attributes}, session: valid_session
+        expect(response).to redirect_to(membership)
       end
     end
 
     context "with invalid params" do
       it "returns a success response (i.e. to display the 'edit' template)" do
-        bar = Bar.create! valid_attributes
-        put :update, params: {id: bar.to_param, bar: invalid_attributes}, session: valid_session
+        membership = Membership.create! valid_attributes
+        put :update, params: {id: membership.to_param, membership: invalid_attributes}, session: valid_session
         expect(response).to be_successful
       end
     end
   end
 
   describe "DELETE #destroy" do
-    it "destroys the requested bar" do
-      bar = Bar.create! valid_attributes
+    it "destroys the requested membership" do
+      membership = Membership.create! valid_attributes
       expect {
-        delete :destroy, params: {id: bar.to_param}, session: valid_session
-      }.to change(Bar, :count).by(-1)
+        delete :destroy, params: {id: membership.to_param}, session: valid_session
+      }.to change(Membership, :count).by(-1)
     end
 
-    it "redirects to the bars list" do
-      bar = Bar.create! valid_attributes
-      delete :destroy, params: {id: bar.to_param}, session: valid_session
-      expect(response).to redirect_to(bars_url)
+    it "redirects to the memberships list" do
+      membership = Membership.create! valid_attributes
+      delete :destroy, params: {id: membership.to_param}, session: valid_session
+      expect(response).to redirect_to(memberships_url)
     end
   end
 

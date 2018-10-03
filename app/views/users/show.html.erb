@@ -5,12 +5,14 @@
 </h1>
 
 <p>
-  <% if @user.ratings.empty? %>
-  has not made any ...!
-  <% else %>
-  <%= "Has made #{pluralize(@user.ratings.count, "rating")}, average rating #{@user.average_rating}" %>
+  <% if @user.beer_clubs.any? %>
+    member of 
+    <% @user.beer_clubs.each do |club| %>
+      <li> <%= link_to club.name, club %> </li>
+    <% end %>
   <% end %>
 </p>
+
 
 <table>
   <p> 
@@ -24,8 +26,19 @@
         </li>
       <% end %>
     </ul>
+
+    <p>
+  <% if @user.ratings.empty? %>
+  has not given any reviews yet
+  <% else %>
+  <%= "Has made #{pluralize(@user.ratings.count, "rating")}, average rating #{@user.average_rating}" %>
+  <% end %>
+</p>
+
   </p>
 </table>
+
+
 
  
 
