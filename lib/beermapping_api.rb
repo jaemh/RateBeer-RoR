@@ -1,4 +1,21 @@
 class BeermappingApi
+  
+    def self.places_in(city)
+      city = city.downcase
+      Rails.cache.fetch(city) { get_places_in(city) }
+    end
+    
+    def self.places_in(city)
+      city = city.downcase
+
+      places = Rails.cache.read(city) 
+      return places if places
+
+      places = get_places_in(city)
+      Rails.cache.write(city, places)
+      places
+    end
+    
     def self.places_in(city)
       url = "http://beermapping.com/webservice/loccity/#{key}/"
   
@@ -14,6 +31,7 @@ class BeermappingApi
     end
   
     def self.key
-        "dc2cc01f4307c8ce6d8f83ddafbb5d50"
+      raise "BEERMAPPING_APIKEY env variable not defined" if ENV['BEERMAPPING_APIKEY'].nil?
+      ENV['BEERMAPPING_APIKEY']
     end
 end

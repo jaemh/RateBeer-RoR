@@ -11,7 +11,9 @@ class BreweriesController < ApplicationController
 
   # GET /breweries/1
   # GET /breweries/1.json
-
+  def show
+  end
+  
   # GET /breweries/new
   def new
     @brewery = Brewery.new

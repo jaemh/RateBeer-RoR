@@ -8,6 +8,9 @@ class RatingsController < ApplicationController
     @rating = Rating.new
   end
 
+  def show
+  end
+
   def create
     @rating = Rating.new params.require(:rating).permit(:score, :beer_id)
     @rating.user = current_user
