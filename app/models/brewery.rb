@@ -13,4 +13,7 @@ class Brewery < ApplicationRecord
                    less_than_or_equal_to: Date.today.year
                 }
   
+  scope :active, -> { where active: true }
+  scope :retired, -> { where active: [nil,false] }
+  
 end

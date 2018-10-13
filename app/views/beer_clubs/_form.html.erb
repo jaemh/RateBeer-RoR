@@ -11,22 +11,25 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
+    <form>  
+      <div class='form-group' >
+        <%= form.label :name %>
+        <%= form.text_field :name, class:"form-control" %>
+      </div>
 
-  <div class="field">
-    <%= form.label :founded %>
-    <%= form.text_field :founded %>
-  </div>
+      <div class="form-group">
+        <%= form.label :founded %>
+        <%= form.text_field :founded, class:"form-control" %>
+      </div>
 
-  <div class="field">
-    <%= form.label :city %>
-    <%= form.text_field :city %>
-  </div>
+      <div class="form-group">
+        <%= form.label :city%>
+        <%= form.text_field :city, class:"form-control" %>
+      </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+      <div>
+        <%= form.submit :"Create a beer club", class:'btn btn-primary' %>
+        <br>
+      </div>
+    </form>
 <% end %>
