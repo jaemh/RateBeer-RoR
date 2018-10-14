@@ -14,8 +14,11 @@ class User < ApplicationRecord
 
   validates :password, length: { minimum: 4},
                        format: { with: /(?=.*[A-Z])./, 
-                       message: "must include at least one one uppercase letter"}
-
+                       message: "must include at least one one uppercase letter"
+                }
+  
+  scope :active, -> { where active: true }
+  scope :locked, -> { where active: [nil,false] }
 
   def favorite_beer
     return nil if ratings.empty?
@@ -26,7 +29,6 @@ class User < ApplicationRecord
     scores.each do |score|
       create_beer_with_rating(object, score)
   end
-  
   end
 end
 
