@@ -2,9 +2,6 @@
 
 <h1>
   <%= @user.username %>
-  <% if @user.active  %>
-    <span class="badge badge-info">Locked</span>
-  <% end %>
 </h1>
 
 <% if current_user.try(:admin?) %>

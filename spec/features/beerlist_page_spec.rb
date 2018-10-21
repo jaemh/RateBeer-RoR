@@ -37,26 +37,20 @@ describe "Beerlist page" do
     visit beerlist_path
     find('table').find('tr:nth-child(2)')
     save_and_open_page
-    expect(page).to have_content "Fastenbier"
-    expect(page).to have_content "Lechte Weisse"
-    expect(page).to have_content "Nikolai"
+    Beer.order('name').all.should == [@beer2, @beer3, @beer1]
   end
 
   it "on click style beers are arranged by style", js:true do
     visit beerlist_path
     find('table').find('tr:nth-child(2)')
     save_and_open_page
-    expect(page).to have_content "Lager"
-    expect(page).to have_content "Rauchbier"
-    expect(page).to have_content "Weizen"
+    Style.order('name').all.should == [@style1, @style2, @style3]
   end
 
   it "on click brewery beers are arranged by brewery", js:true do
     visit beerlist_path
     find('table').find('tr:nth-child(2)')
     save_and_open_page
-    expect(page).to have_content "Ayinger"
-    expect(page).to have_content "Koff"
-    expect(page).to have_content "Schlenkerla"
+    Brewery.order('name').all.should == [@brewery3, @brewery1, @brewery2]
   end
 end

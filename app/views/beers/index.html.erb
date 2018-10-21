@@ -2,7 +2,9 @@
 
 <h1>Beers</h1>
 
-<table id="mytable" class="table table-bordred table-striped">
+<% cache 'beerlist-#{@order}', skip_digest: true do %>
+
+<table id="beertable" class="table table-bordred table-striped">
   <div class="row">
     <div class="col-md-12">
       <div class="table-responsive">
@@ -33,7 +35,7 @@
   </div>
 </table>
 <br>
-
+<%end%>
 <p><%= link_to 'List of breweries', breweries_path %></p>
 
 <%= link_to('New Beer', new_beer_path, class:'btn btn-primary') if current_user %>

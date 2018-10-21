@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+<% cache @brewery do %>
 <h1>
   <%= @brewery.name %>
     <% if not @brewery.active  %>
@@ -24,7 +24,7 @@
   <%= "Has #{pluralize(@brewery.ratings.count, "brewery")}, average #{@brewery.average_rating}" %>
   <% end %>
 </p>
-
+<%end%>
 
 <%= link_to('Edit', edit_brewery_path(@brewery), class:"btn btn-primary") %> 
 <%= link_to('Back', breweries_path, class:"btn btn-primary") %>

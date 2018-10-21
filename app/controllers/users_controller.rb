@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.includes(:ratings, :beer_clubs, :memberships).all
+    @users = User.includes(:ratings, :beer_clubs, :memberships, ).all
     @user_active = User.where(active: true)
     @user_locked = User.where(active: false)
   end
