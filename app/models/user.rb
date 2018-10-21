@@ -30,5 +30,29 @@ class User < ApplicationRecord
       create_beer_with_rating(object, score)
   end
   end
+
+  def favorite_style
+    favorite(:style)
+  end
+
+  def favorite_brewery
+    favorite(:brewery)
+  end
+
+  def favorite(groupped_by)
+    return nil if ratings.empty?
+
+    grouped_ratings = ratings.group_by{ |r| r.beer.send(groupped_by) }
+    averages = grouped_ratings.map do |group, ratings|
+      { group: group, score: average_of(ratings) }
+    end
+
+    averages.max_by{ |r| r[:score] }[:group]
+  end
+
+  def self.top(how_many)
+    sorted_by_rating_in_desc_order = all.sort_by{ |u| -u.ratings.count }
+    sorted_by_rating_in_desc_order[0, how_many]
+  end
 end
 

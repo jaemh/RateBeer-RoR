@@ -7,6 +7,11 @@
   <% end %>
 </h1>
 
+<% if current_user.try(:admin?) %>
+<%= link_to (@user.active ? 'open account' : 'close account')%>
+<% end %>
+
+
 <p>
   <% if @user.beer_clubs.any? %>
     member of 
@@ -18,8 +23,7 @@
 
 
 <table>
-  <p> 
-    <h3>ratings</h3>
+  <h3>ratings</h3>
     <ul>
       <% @user.ratings.each do |rating| %>
         <li><%= rating %> 
@@ -29,21 +33,13 @@
         </li>
       <% end %>
     </ul>
-
-    <p>
-  <% if @user.ratings.empty? %>
-  has not given any reviews yet
-  <% else %>
-  <%= "Has made #{pluralize(@user.ratings.count, "rating")}, average rating #{@user.average_rating}" %>
-  <% end %>
-</p>
-
-  </p>
+          <% if @user.ratings.empty? %>
+            has not given any reviews yet
+          <% else %>
+          <%= "Has made #{pluralize(@user.ratings.count, "rating")}, average rating #{@user.average_rating}" %>
+          <% end %>
 </table>
 
-
-
- 
 
 <% if @user == current_user %>
   <%= link_to 'Edit', edit_user_path(@user) %> |

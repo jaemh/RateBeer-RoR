@@ -17,7 +17,7 @@ gem 'httparty'
 gem 'bootstrap', '~> 4.1.3' 
 gem 'jquery-rails'
 gem 'sprockets-rails', :require => 'sprockets/railtie'
-
+gem 'rack-mini-profiler'
 
 group :development, :test do
   gem 'sqlite3'

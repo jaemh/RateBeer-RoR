@@ -1,5 +1,7 @@
 const BREWERIES = {}
 
+
+
 BREWERIES.show = () => {
     $("#brewerytable tr:gt(0)").remove()
     const table = $("#brewerytable")
@@ -42,11 +44,20 @@ document.addEventListener("turbolinks:load", () => {
         BREWERIES.sort_by_year()
         BREWERIES.show()
       })
+    
+    $("#beer").click((e) => {
+        e.preventDefault()
+        BEERS.sort_by_beer()
+        BEERS.show()
+    });
 
     $.getJSON('breweries.json', (breweries) => {
         BREWERIES.list = breweries
         BREWERIES.show()
-      })
+    })
+
+
+
 })
 
 

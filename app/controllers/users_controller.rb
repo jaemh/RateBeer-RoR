@@ -5,9 +5,9 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
-    @active_users = User.where(active: true)
-    @locked_users = User.where(active: false)
+    @users = User.includes(:ratings, :beer_clubs, :memberships).all
+    @user_active = User.where(active: true)
+    @user_locked = User.where(active: false)
   end
 
   # GET /users/1
@@ -65,6 +65,16 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def toggle_closed
+    user = User.find(params[:id])
+    user.update_attribute :locked, !user.locked
+
+    new_status = user.frozen? ? "locked" : "active"
+
+    redirect_to user, notice: "account of #{user.username} #{new_status}"
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
