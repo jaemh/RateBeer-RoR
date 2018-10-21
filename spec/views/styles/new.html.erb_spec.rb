@@ -4,8 +4,7 @@ RSpec.describe "styles/new", type: :view do
   before(:each) do
     assign(:style, Style.new(
       :name => "MyString",
-      :style_id => 1,
-      :beer_id => 1
+      :text => "MyString"
     ))
   end
 
@@ -16,9 +15,7 @@ RSpec.describe "styles/new", type: :view do
 
       assert_select "input[name=?]", "style[name]"
 
-      assert_select "input[name=?]", "style[style_id]"
-
-      assert_select "input[name=?]", "style[beer_id]"
+      assert_select "input[name=?]", "style[text]"
     end
   end
 end

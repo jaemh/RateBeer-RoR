@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   get 'signout', to: 'sessions#destroy'
   post 'places', to:'places#search'
   get '/places/:id', to: 'places#show', as: 'place'
+  get 'beerlist', to:'beers#list'
+  get 'brewerylist', to:'breweries#list'
 
   
   resources :ratings, only: [:index, :new, :create, :destroy]

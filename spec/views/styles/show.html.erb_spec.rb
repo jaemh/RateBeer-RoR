@@ -4,15 +4,13 @@ RSpec.describe "styles/show", type: :view do
   before(:each) do
     @style = assign(:style, Style.create!(
       :name => "Name",
-      :style_id => 2,
-      :beer_id => 3
+      :text => "Text"
     ))
   end
 
   it "renders attributes in <p>" do
     render
     expect(rendered).to match(/Name/)
-    expect(rendered).to match(/2/)
-    expect(rendered).to match(/3/)
+    expect(rendered).to match(/Text/)
   end
 end
